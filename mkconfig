@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#
+# mkconfig — universal setup script by howtoedittv
+# Supports Arch, Debian/Ubuntu, Fedora, openSUSE, Void, and Gentoo.
+# Installs core CLI tools, restores your dotfiles, and sets up Oh My Posh.
+
+set -e
+
+REPO_DIR="$HOME/mydots.git"
+OLD_DIR="$HOME/oldstuff"
+PKGS=(eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk)
+
+# --- Helper functions ---
+is_installed() { command -v "$1" &>/dev/null; }
+log() { echo -e "\033[1;36m==>\033[0m $*"; }
+
+log "🚀 Starting mkconfig setup..."
+cd "$REPO_DIR" || { echo "❌ Repo folder not found at $REPO_DIR"; exit 1; }
+
+
+for pkg in "${PKGS[@]}"; do
+    if ! is_installed "$pkg"; then
+    	log "Installing $pkg..."
+    	sudo pkg install "$pkg"
+    else
+        log "$pkg already installed."
+        
+	fi
+done
+
+log "Backing up old bashrc..."
+mkdir -p "$OLD_DIR"
+[ -f ~/.bashrc ] && mv ~/.bashrc "$OLD_DIR/" || true
+
+log "Applying new configs..."
+mv ~/mydots.git/bashrc ~/.bashrc
+mv ~/mydots.git/startf.sh ~/
+
+
+# --- ble.sh setup ---
+cd ~
+
+log "installing ble.sh "
+git clone https://github.com/akinomyoga/ble.sh.git
+
+cd ble.sh
+
+make
+
+cd ~
+
+# --- Oh My Posh setup -
+cd ~
+log "Installing Oh My Posh ✨"
+mkdir -p ~/bin
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
+sudo cp -r ~/bin/oh-my-posh /usr/bin/
+oh-my-posh font install 0xproto || true
+mkdir -p ~/Downloads/poshthemes/
+cp ~/mydots.git/catppuccin.omp.json ~/Downloads/poshthemes/ 
+log "✅ Setup complete!"
+
+# --- rebooting -
+echo "�now rebooting your pc."
+sleep 3
+reboot 
+
