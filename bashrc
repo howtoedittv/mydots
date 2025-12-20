@@ -1,6 +1,5 @@
 export dots="/home/$USER/.config/oxwm/config.lua"
 
-export lindir="/compat/ubuntu/shared"
 # ────────────────────────────────
 # Aliases
 # ────────────────────────────────
@@ -20,8 +19,6 @@ alias bedit='nvim ~/.bashrc'
 alias about='tldr '
 
 alias xi='sudo pkg install'
-
-alias fbsl="sudo chroot /compat/ubuntu /bin/bash"
 
 # ────────────────────────────────
 # Prompt
