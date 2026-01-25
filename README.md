@@ -24,9 +24,10 @@ chmod +x mkconfig
 ```sh
 mkdir ~/.old
 mv ~/.bashrc ~/.old
-sudo mv $PWD/bashrc ~/.bashrc
+mkdir ~/.config/fish
+sudo mv $PWD/config.fish ~/.config/fish/
 sudo mv $PWD/startf.sh ~/
-with your package manager install eza, zoxide ,fzf, bat, git, wget, thefuck, tldr, gedit, neofetch, curl, unzip, make, gcc, gawk and gmake (note: the Packages may be named diffrently or might not be avilable at all If you cant find it you can just ignore it :>)
+with your package manager install eza, zoxide ,fzf, bat, git, wget, thefuck, tldr, gedit, neofetch, curl, unzip, make, gcc, gawk, gmake, and fish (note: the Packages may be named diffrently or might not be avilable at all If you cant find it you can just ignore it :>)
 ```
 
 ## Features
