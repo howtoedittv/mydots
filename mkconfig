@@ -4,8 +4,7 @@
 # Supports Arch, Debian/Ubuntu, Fedora, openSUSE, Void, and Gentoo.
 # Installs core CLI tools, restores your dotfiles, and sets up Oh My Posh.
 
-REPO_DIR="$HOME/mydots-freebsd"
-OLD_DIR="$HOME/oldstuff"
+REPO_DIR="$PWD"
 echo "if you have any errors with the pacakges installing it might require some manual patching based on the sepcic packages names in your distro"
 
 if command -v pacman &>/dev/null; then
@@ -39,12 +38,12 @@ elif command -v pkg &>/dev/null; then
     sudo pkg install eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk
 
 echo "Backing up old bashrc..."
-mkdir -p "$OLD_DIR"
-[ -f ~/.bashrc ] && mv ~/.bashrc "$OLD_DIR/" || true
+mkdir -p ~/.old
+mv ~/.bashrc ~/.old
 
 echo "Applying new configs..."
-mv ~/mydots-freebsd/bashrc ~/.bashrc
-mv ~/mydots-freebsd/startf.sh ~/
+mv $PWD/bashrc ~/.bashrc
+mv $PWD/startf.sh ~/
 
 
 # --- ble.sh setup ---
