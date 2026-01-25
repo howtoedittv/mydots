@@ -1,0 +1,11 @@
+git init
+git add .
+git commit -m "Initial commit"
+
+
+echo -n "Enter desired GitHub repo name: "
+read name
+
+# Create GitHub repo using gh CLI
+gh repo create "$name" --public --source=. --remote=origin --push
+
