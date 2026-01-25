@@ -8,42 +8,43 @@ echo "if you have any errors with the pacakges installing it might require some 
 
 if command -v pacman &>/dev/null; then
     echo "Detected Arch-based system."
-    sudo pacman -Sy --needed --noconfirm eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gawk gmake fish
+    sudo pacman -Sy --needed --noconfirm eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gawk gmake fish wezterm
 
 elif command -v apt &>/dev/null; then
     echo "Detected Debian/Ubuntu-based system."
     sudo apt update
-    sudo apt install -y eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish
+    sudo apt install -y eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish wezterm
 
 elif command -v dnf &>/dev/null; then
     echo "Detected Fedora-based system."
-    sudo dnf install -y eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish
+    sudo dnf install -y eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish wezterm
 
 elif command -v zypper &>/dev/null; then
     echo "Detected openSUSE-based system."
     sudo zypper refresh
-    sudo zypper install -y eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish
+    sudo zypper install -y eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish wezterm
 
 elif command -v xbps-install &>/dev/null; then
     echo "Detected Void Linux."
-    sudo xbps-install -Sy eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish
+    sudo xbps-install -Sy eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish wezterm
 
 elif command -v emerge &>/dev/null; then
     echo "Detected Gentoo."
-    sudo emerge -aq eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish
+    sudo emerge -aq eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish wezterm
 
 elif command -v pkg &>/dev/null; then
     echo "Detected bsd based distro."
-    sudo pkg install eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish
+    sudo pkg install eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk fish wezterm
 
 echo "Backing up old bashrc..."
 mkdir -p ~/.old
 mv ~/.bashrc ~/.old
 
 echo "Applying new configs..."
-mkdir ~/.config/fish
+mkdir ~/.config/{fish,wezterm}
 mv $PWD/config.fish ~/.config/fish/
 mv $PWD/startf.sh ~/
+mv $PWD/wezterm.lua /~.config/wezterm/
 sudo chsh -S /usr/bin/fish $USER
 sudo chsh -S /usr/bin/fish root
 
