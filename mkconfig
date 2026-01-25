@@ -4,15 +4,13 @@
 # Supports Arch, Debian/Ubuntu, Fedora, openSUSE, Void, and Gentoo.
 # Installs core CLI tools, restores your dotfiles, and sets up Oh My Posh.
 
-set -e
-
 REPO_DIR="$HOME/mydots-freebsd"
 OLD_DIR="$HOME/oldstuff"
 echo "if you have any errors with the pacakges installing it might require some manual patching based on the sepcic packages names in your distro"
 
 if command -v pacman &>/dev/null; then
     echo "Detected Arch-based system."
-    sudo pacman -Sy --needed --noconfirm eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gmake gawk
+    sudo pacman -Sy --needed --noconfirm eza zoxide fzf bat git wget thefuck tldr gedit neofetch curl unzip make gcc gawk gmake
 
 elif command -v apt &>/dev/null; then
     echo "Detected Debian/Ubuntu-based system."
@@ -44,7 +42,7 @@ echo "Backing up old bashrc..."
 mkdir -p "$OLD_DIR"
 [ -f ~/.bashrc ] && mv ~/.bashrc "$OLD_DIR/" || true
 
-log "Applying new configs..."
+echo "Applying new configs..."
 mv ~/mydots-freebsd/bashrc ~/.bashrc
 mv ~/mydots-freebsd/startf.sh ~/
 
@@ -61,15 +59,6 @@ make
 
 cd ~
 
-# --- Oh My Posh setup -
-cd ~
-echo "Installing Oh My Posh âœ¨"
-mkdir -p ~/bin
-curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
-sudo cp -r ~/bin/oh-my-posh /usr/bin/
-oh-my-posh font install 0xproto || true
-mkdir -p ~/Downloads/poshthemes/
-cp ~/mydots-freebsd/catppuccin.omp.json ~/Downloads/poshthemes/ 
 
 sleep 3
 echo "âœ… Setup complete!"
