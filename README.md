@@ -1,8 +1,8 @@
-# mogit
+# mydots
 
 Cross-Platform Git GUI Launcher
 
-**mogit** is a simple Git GUI tool available for most Linux distributions and FreeBSD. It provides an easy way to visualize and interact with Git repositories, making it easy to quickly create a new Git repository.
+**mydots** is a script tool available for most Linux distributions and FreeBSD. It Installs My used Apps and applies My personal Bash Config
 
 ---
 
@@ -10,45 +10,35 @@ Cross-Platform Git GUI Launcher
 
 ### Clone the repository:
 ```sh
-git clone https://github.com/howtoedittv/mogit.git
-cd mogit
+git clone https://github.com/howtoedittv/mydots.git
+cd mydots
 ```
 
 ### Quick Install:
 ```sh
-chmod +x init
-./init
+chmod +x mkconfig
+./mkconfig
 ```
 
 ### Manual Install:
 ```sh
-chmod +x mogit
-sudo mv $PWD/mogit /usr/bin/
-with your package manager install git github-cli xdg-utils (note: on bsd based distros the github-cli package is useally named gh insted)
-
-in the terminal type gh auth login and fallow the intructions on screen
-
-after that wait until your in your prompt once more and type in:
-git config --global user.email <your email>
-git config --global user.name <your username>
-```
-## Usage
-
-Once installed, you can launch qgit from anywhere by running:
-```sh
-mogit
+mkdir ~/.old
+mv ~/.bashrc ~/.old
+sudo mv $PWD/bashrc ~/.bashrc
+sudo mv $PWD/startf.sh ~/
+with your package manager install eza, zoxide ,fzf, bat, git, wget, thefuck, tldr, gedit, neofetch, curl, unzip, make, gcc, gawk and gmake (note: the Packages may be named diffrently or might not be avilable at all If you cant find it you can just ignore it :>)
 ```
 
 ## Features
 
 - Cross-platform support (Linux and FreeBSD)
-- Simple Git GUI for repository visualization
+- Simple Script based Install
 - Easy installation and setup
-- Quickly create a new Git repository
+- Nice looking Linux by the End of it 
 
 ## Purpose
 
-mogit exists to provide a lightweight and user-friendly interface for Git, making repository management accessible and efficient across multiple platforms.
+mydots exsits for making my personal config accessible across multiple platforms easly.
 
 ## Contributing
 
