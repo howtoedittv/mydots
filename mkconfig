@@ -6,33 +6,33 @@ echo "if you have any errors with the pacakges installing it might require some 
 
 if command -v pacman &>/dev/null; then
     echo "Detected Arch-based system."
-    sudo pacman -Sy --needed --noconfirm eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm
+    sudo pacman -Sy --needed --noconfirm eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm unzip
 
 elif command -v apt &>/dev/null; then
     echo "Detected Debian/Ubuntu-based system."
     sudo apt update
-    sudo apt install -y eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm
+    sudo apt install -y eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm unzip
 
 elif command -v dnf &>/dev/null; then
     echo "Detected Fedora-based system."
-    sudo dnf install -y eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm
+    sudo dnf install -y eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm unzip
 
 elif command -v zypper &>/dev/null; then
     echo "Detected openSUSE-based system."
     sudo zypper refresh
-    sudo zypper install -y eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm
+    sudo zypper install -y eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm unzip
 
 elif command -v xbps-install &>/dev/null; then
     echo "Detected Void Linux."
-    sudo xbps-install -Sy eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm
+    sudo xbps-install -Sy eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm unzip
 
 elif command -v emerge &>/dev/null; then
     echo "Detected Gentoo."
-    sudo emerge -aq eza zoxide fzf bat dev-vcs/git wget thefuck tldr gedit fish wezterm
+    sudo emerge -aq eza zoxide fzf bat dev-vcs/git wget thefuck tldr gedit fish wezterm unzip
 
 elif command -v pkg &>/dev/null; then
     echo "Detected bsd based distro."
-    sudo pkg install eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm
+    sudo pkg install eza zoxide fzf bat git wget thefuck tldr gedit fish wezterm unzip
 
 fi
 
@@ -44,7 +44,20 @@ mv $PWD/wezterm.lua ~/.config/wezterm/
 sudo chsh -s /usr/bin/fish $USER
 sudo chsh -s /usr/bin/fish root
 
+
 cd ~
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.zip
+mkdir Iosevka-nerd
+mv Iosevka.zip Iosevka-nerd
+cd Iosevka-nerd
+unzip Iosevka.zip
+
+cd ~
+sudo mkdir -p /usr/share/fonts
+sudo mv Iosevka-nerd /usr/share/fonts
+fc-cache -v
+sleep 2
+
 git clone https://github.com/dylanaraps/neofetch.git
 cd neofetch
 sudo make install
