@@ -58,6 +58,11 @@ sudo mv Iosevka-nerd /usr/share/fonts
 fc-cache -v
 sleep 2
 
+git clone https://github.com/howtoedittv/tony-walls
+mkdir -p ~/Pictures/wallpapers/
+mv ~/tony-walls/wall1.jpg ~/Pictures/wallpapers/wall1.jpg
+
+
 git clone https://github.com/dylanaraps/neofetch.git
 cd neofetch
 sudo make install
