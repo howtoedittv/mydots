@@ -14,21 +14,23 @@ git clone https://github.com/howtoedittv/mydots.git
 cd mydots
 ```
 
-### Quick Install:
+### Install:
 ```sh
 chmod +x mkconfig
 ./mkconfig
 ```
-
-### Manual Install:
+### Notes
 ```sh
-mkdir ~/.old
-mv ~/.bashrc ~/.old
-mkdir ~/.config/{fish,wezterm}
-sudo mv $PWD/config.fish ~/.config/fish/
-sudo mv $PWD/startf.sh ~/
-sudo mv $PWD/wezterm.lua ~/.config/wezterm/
-with your package manager install eza, zoxide ,fzf, bat, git, wget, thefuck, tldr, gedit, neofetch, curl, unzip, make, gcc, gawk, gmake, fish and wezterm (note: the Packages may be named diffrently or might not be avilable at all If you cant find it you can just ignore it :>)
+- for fedora users:
+-- eza is not on the main repos you would have to manually remove it from the dnf install line you could install it by running
+
+wget https://rpmfind.net/linux/opensuse/ports/aarch64/tumbleweed/repo/oss/aarch64/eza-0.23.4-1.3.aarch64.rpm
+
+sudo dnf install eza-0.23.4-1.3.aarch64.rpm
+
+- for debain/ubuntu based users:
+-- you will have to edit ~/.config/fish/config.fish and chnage the alias cat=bat to alias cat=batcat since it is referd to it like that there
+
 ```
 
 ## Features
